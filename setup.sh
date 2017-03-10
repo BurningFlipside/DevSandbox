@@ -28,6 +28,8 @@ ok
 if [ ! -d '.volumes' ]; then
   action "create shared data volume dir"
   mkdir .volumes; ok
+  mkdir .volumes/session; ok
+  chmod 777 .volumes/session; ok
 fi
 
 if [ ! -f 'docker-compose.yml' ]; then
