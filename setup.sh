@@ -27,8 +27,8 @@ ok
 
 if [ ! -d '.volumes' ]; then
   action "create shared data volume dir"
-  mkdir .volumes;
-  mkdir .volumes/session;
+  mkdir .volumes
+  mkdir .volumes/session
   chmod 777 .volumes/session; ok
 fi
 
