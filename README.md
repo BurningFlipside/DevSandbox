@@ -18,19 +18,13 @@ This repo uses Docker Compose so you should have Docker installed on your workst
   * https://github.com/BurningFlipside/VolunteerSystem
 1. clone this repo to your workstation
   ```
-  git clone thisrepo
+  git clone https://github.com/BurningFlipside/DevSandbox
   ```
 1. run setup helper script
   ```
-  cd thisrepo
+  cd DevSandbox
   ./setup.sh
   ```
-
-## seed data
-repeat this command for each of the three options
-```
-$ bin/seed
-```
 
 ## spin up services
 
@@ -38,7 +32,8 @@ docker instances will run your services but will read source from local repos in
 
 change source code and refresh browser to immediately see your changes
 
-if you have mysql, ldap, or mongo database services running on your development machine you will need to stop those services or modify setting here.
+if you have mysql, ldap, or mongo database services running on your development machine you will need to stop those services while docker-compose is running.
+
 ```
 $ docker-compose up
 ```
