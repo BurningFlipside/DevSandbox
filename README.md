@@ -21,7 +21,6 @@ You still might find advantages to working in a virtual machine.
 If you create your virtual machine using these instructions you can skip the prerequisites below.
 https://bhedana.gitbooks.io/burner-code-school-sandbox-provisioning/content/
 
-
 ## prerequisites
 1. [Install Docker](https://www.docker.com/products/overview)
 1. [Install Docker Compose](https://docs.docker.com/compose/install/)
@@ -39,19 +38,13 @@ https://bhedana.gitbooks.io/burner-code-school-sandbox-provisioning/content/
   * https://github.com/BurningFlipside/VolunteerSystem
 1. clone this repo to your workstation
   ```
-  git clone thisrepo
+  git clone https://github.com/BurningFlipside/DevSandbox
   ```
 1. run setup helper script
   ```
-  cd thisrepo
+  cd DevSandbox
   ./setup.sh
   ```
-
-## seed data
-repeat this command for each of the three options
-```
-$ bin/seed
-```
 
 ## spin up services
 
@@ -59,7 +52,8 @@ docker instances will run your services but will read source from local repos in
 
 change source code and refresh browser to immediately see your changes
 
-if you have mysql, ldap, or mongo database services running on your development machine you will need to stop those services or modify setting here.
+if you have mysql, ldap, or mongo database services running on your development machine you will need to stop those services while docker-compose is running.
+
 ```
 $ docker-compose up
 ```
