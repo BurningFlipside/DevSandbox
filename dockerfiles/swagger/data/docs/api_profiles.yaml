@@ -4,8 +4,8 @@ info:
   title: Burning Flipside User API
   description: This api allows access to basic user data including profiles
   contact:
-    name: Problem
-    email: problem@burningflipside.com
+    name: Technology Team
+    email: technology@burningflipside.com
 host: profiles.burningflipside.com
 basePath: /api/v1
 schemes:
