@@ -12,7 +12,7 @@ If you are running another version of windows we recommend creating a linux virt
 
 ## If your workstation runs OSX or Linux
 
-You can run the latest docker with little restriction.
+These tools have been created for and tested with debian linux. YMMV.
 
 You still might find advantages to working in a virtual machine.
 
