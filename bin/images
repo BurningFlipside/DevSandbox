@@ -14,7 +14,11 @@ function pull() {
         tag='latest'
       fi
       action "fetch docker image $image:$tag"
-      docker pull $image:$tag
+      if [ -f '.usesudo' ]; then
+        sudo docker pull $image:$tag
+      else
+        docker pull $image:$tag
+      fi
       ok
   done
 }
@@ -24,7 +28,11 @@ function prune() {
   for (( idx=${#IMAGES[@]}-1 ; idx>=0 ; idx-- )) ; do
       image=`echo "${IMAGES[idx]}" | awk '{print $1}'`
       action "prune docker image $image"
-      docker rmi $(docker images | grep "$image" | awk '{print $3}')
+      if [ -f '.usesudo' ]; then
+        sudo docker rmi $(docker images | grep "$image" | awk '{print $3}')
+      else
+        docker rmi $(docker images | grep "$image" | awk '{print $3}')
+      fi
       ok
   done
   set -e
