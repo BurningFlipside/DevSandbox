@@ -37,13 +37,18 @@ services:
     restart: always
     networks:
       flipside:
-  
+
   www:
     container_name: www.burningflipside.local
     image: burnerdev/php-appserver:7.1-apache
+    environment:
+      HOSTNAME: www.burningflipside.local
+      DB_HOST: mysql.burningflipside.local
+      DB_NAME: wordpress
+      DB_USER: wordpress
+      DB_PASSWORD: p@s5w0rd
     env_file:
       - secrets/envvars
-      - secrets/wiki/envvars
     volumes:
       - ./src/secure_settings:/var/www/secure_settings
       - ./src/common:/var/www/common
@@ -61,9 +66,14 @@ services:
   wiki:
     container_name: wiki.burningflipside.local
     image: burnerdev/php-appserver:7.1-apache
+    environment:
+      HOSTNAME: wiki.burningflipside.local
+      DB_HOST: mysql.burningflipside.local
+      DB_NAME: pyropedia
+      DB_USER: pyropedia
+      DB_PASSWORD: p@s5w0rd
     env_file:
       - secrets/envvars
-      - secrets/wiki/envvars
     volumes:
       - ./src/secure_settings:/var/www/secure_settings
       - ./src/common:/var/www/common
@@ -81,9 +91,10 @@ services:
   profiles:
     container_name: profiles.burningflipside.local
     image: burnerdev/php-appserver:7.1-apache
+    environment:
+      HOSTNAME: profiles.burningflipside.local
     env_file:
       - secrets/envvars
-      - secrets/profiles/envvars
     volumes:
       - ./src/secure_settings:/var/www/secure_settings
       - ./src/common:/var/www/common
@@ -101,9 +112,10 @@ services:
   secure:
     container_name: secure.burningflipside.local
     image: burnerdev/php-appserver:7.1-apache
+    environment:
+      HOSTNAME: secure.burningflipside.local
     env_file:
       - secrets/envvars
-      - secrets/secure/envvars
     volumes:
       - ./src/secure_settings:/var/www/secure_settings
       - ./src/common:/var/www/common
