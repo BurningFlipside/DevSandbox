@@ -1,6 +1,7 @@
 FROM debian:jessie
 
-ENV VERSION 2.0.0.v20161101-M12
+ENV VERSION 2.0.0.v20180908-M14
+
 # ENV MIRROR https://www.apache.org/dist/directory/studio
 ENV MIRROR http://apache.mirrors.hoobly.com/directory/studio/
 ENV FILE "ApacheDirectoryStudio-$VERSION-linux.gtk.x86_64.tar.gz"
@@ -18,7 +19,7 @@ RUN apt-get update && apt-get -y install --no-install-recommends \
 	&& rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p $HOME/.ApacheDirectoryStudio \
-    && groupadd -r app \ 
+    && groupadd -r app \
     && useradd -r -g app -G audio,video app
 
 RUN curl -L $MIRROR/$VERSION/$FILE.asc -o $FILE.asc \
@@ -32,7 +33,7 @@ RUN curl -L $MIRROR/$VERSION/$FILE.asc -o $FILE.asc \
     && mv ApacheDirectoryStudio/* $HOME \
     && chown -R app:app $HOME \
     && rm -rf ApacheDirectoryStudio* \
-    && rm KEYS 
+    && rm KEYS
 
 USER app
 
