@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# shellcheck disable=SC1090
+
+function usage() {
+  cat <<- EOF
+
+  run RoboMongo application container
+
+  usage: $0
+
+EOF
+}
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+source "$DIR/../lib/bashui.sh"
+
+get_platform
+
+docker rm -f robomongo.burningflipside.local > /dev/null 2>&1
+
+docker run --rm -d \
+  --name robo3t.burningflipside.local \
+  -e DISPLAY="$DOCKER_DISPLAY" \
+  -v /tmp/.X11-unix:/tmp/.X11-unix \
+  -v "$HOME"/.config/robo3t:/home/app/.config/robo3t \
+  --network flipside_dev \
+  burnerdev/robo3t
