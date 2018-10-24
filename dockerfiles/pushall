@@ -6,7 +6,7 @@
 function usage() {
   cat <<- EOF
 
-  build all docker images
+  push all docker images
 
   usage: $0
 
@@ -22,7 +22,7 @@ for D in *; do
   if [ -d "$D" ]; then
     if [ -f "$D/Makefile" ]; then
       action "build $D"
-      (cd "$D" && make docker-build > buildlog.log)
+      (cd "$D" && make docker-push)
     fi
   fi
 done
