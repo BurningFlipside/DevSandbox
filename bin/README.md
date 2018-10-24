@@ -34,10 +34,6 @@ checkout or update main project git repos
 
 remove data volumes and prune docker images
 
-## bin/robomongo
-
-launches robomongo: Native and cross-platform MongoDB manager
-
 ## bin/seed
 
 populate LDAP, MYSQL, Mongo and browsercap cache with initial values
