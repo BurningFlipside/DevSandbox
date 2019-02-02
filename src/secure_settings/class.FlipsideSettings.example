@@ -36,10 +36,10 @@ class FlipsideSettings
             'base'          => 'dc=burningflipside,dc=local',
             'user_base'     => 'ou=Users,dc=burningflipside,dc=local',
             'group_base'    => 'ou=Groups,dc=burningflipside,dc=local',
-            'ro_bind_dn'    => 'cn=admin,dc=burningflipside,dc=local',
-            'ro_bind_pass'  => 'p@s5w0rd',
-            'rw_bind_dn'    => 'cn=readonly,dc=burningflipside,dc=local',
-            'rw_bind_pass'  => 'p@s5w0rd'
+            'rw_bind_dn'    => 'cn=admin,dc=burningflipside,dc=local',
+            'rw_bind_pass'  => 'p@s5w0rd',
+            'ro_bind_dn'    => 'cn=readonly,dc=burningflipside,dc=local',
+            'ro_bind_pass'  => 'p@s5w0rd'
         ),
         'Auth\\SQLAuthenticator' => array(
             'current' => false,
