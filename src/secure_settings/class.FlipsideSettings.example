@@ -19,7 +19,11 @@ class FlipsideSettings
       'event_url' => 'https://localhost:3100/about/event',
       'aar_url' => 'https://localhost:3100/organization/aar',
       'privacy_url' =>  'https://localhost:3100/about/privacy',
-      'profiles_url' => 'https://localhost:3300'
+
+      'www_url' => 'https://localhost:3100',
+      'wiki_url' => 'https://localhost:3200',
+      'profiles_url' => 'https://localhost:3300',
+      'secure_url' => 'https://localhost:3400'
     );
     public static $sites = array(
       'WWW'=>'https://localhost:3100/',
