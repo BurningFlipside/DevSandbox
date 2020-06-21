@@ -33,7 +33,7 @@ ok
 
 git_clone_or_update "https://github.com/$githubuser/Profiles.git" src/profiles
 
-git_clone_or_update "https://@github.com/$githubuser/SecureFramework.git" src/secure
+git_clone_or_update "https://github.com/$githubuser/SecureFramework.git" src/secure
 action "init / update secure framework submodules"
 ( cd src/secure && git submodule init && git submodule update  )
 ok
