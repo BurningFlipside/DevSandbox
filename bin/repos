@@ -13,6 +13,19 @@ function usage() {
 EOF
 }
 
+if [ -z "$GIT_CONNECTION_TYPE" ]; then
+	GIT_CONNECTION_TYPE="SSH"
+fi
+
+if [ "$GIT_CONNECTION_TYPE" == "SSH" ]; then
+	PREFIX="git@github.com:"
+elif [ "$GIT_CONNECTION_TYPE" == "HTTPS" ]; then
+	PREFIX="https://github.com/"
+else
+	echo "Unknown Git connection type $GIT_CONNECTION_TYPE"
+	exit
+fi
+
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source "$DIR/../lib/bashui.sh"
 
@@ -26,14 +39,14 @@ else
     echo "$githubuser" > .githubuser
 fi
 
-git_clone_or_update "git@github.com:$githubuser/CommonCode.git" src/common
+git_clone_or_update "$PREFIX$githubuser/CommonCode.git" src/common
 action "init / update common code submodules"
 ( cd src/common && git submodule init && git submodule update  )
 ok
 
-git_clone_or_update "git@github.com:$githubuser/Profiles.git" src/profiles
+git_clone_or_update "$PREFIX$githubuser/Profiles.git" src/profiles
 
-git_clone_or_update "git@github.com:$githubuser/SecureFramework.git" src/secure
+git_clone_or_update "$PREFIX$githubuser/SecureFramework.git" src/secure
 action "init / update secure framework submodules"
 ( cd src/secure && git submodule init && git submodule update  )
 ok
@@ -43,7 +56,7 @@ for (( idx=0 ; idx<=${#REPOS[@]}-1 ; idx++ )) ; do
     repo=$(echo "${REPOS[idx]}" | awk '{print $1}')
     local=$(echo "${REPOS[idx]}" | awk '{print $2}')
     # add users private forks as a remote named development
-    ( cd "$local" && git remote add development "git@github.com:$githubuser/$repo" > /dev/null 2>&1 )
+    ( cd "$local" && git remote add development "$PREFIX$githubuser/$repo" > /dev/null 2>&1 )
     # add master flipside repos as a remote named production
     ( cd "$local" && git remote add production "https://github.com/BurningFlipside/$repo" > /dev/null 2>&1 )        
 done
